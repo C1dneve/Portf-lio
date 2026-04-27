@@ -9,6 +9,7 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    <!-- cores para serem chamadas dentro do class mais facinho -->
                     colors: {
                         destaque: '#F2AF29',
                         fundo1: '#000000',
@@ -19,89 +20,146 @@
         }
     </script>
 </head>
-<body class="bg-fundo1 text-gray-200 font-sans leading-relaxed selection:bg-destaque selection:text-fundo1">
-
+<!-- deixa o fundo na cor do fundo1 e o texto cinza, se aumentar o 200 fica mais preto se diminuir fica mais branco e se selecionar o espaço do texto ele fica amarelo com o texto em si preto -->
+<body class="bg-fundo1 text-gray-200 font-sans selection:bg-destaque selection:text-fundo1">
+<!-- faz com  que o header ficar na tela toda com os itens no meio e deixa um amarelo no canto de baixo amarelo e faz um gradiente do fundo1 para o destaque-->
     <header id="inicio" class="min-h-screen flex items-center bg-gradient-to-br from-fundo1 from-40% to-destaque border-b-4 border-destaque">
-        <div class="max-w-6xl mx-auto px-6 w-full">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white">
+        <!-- faz um espaço de 6 no texto, fica melhor no cel -->
+        <div class=" px-6">
+            <!-- faz o texto ficar maior e em negrito e com o um espaço em baixo(o botom)-->
+            <h1 class="text-7xl font-bold mb-4">
+                <!-- faz o tecto cid ficar na cor destaque -->
                 Olá, eu sou o <span class="text-destaque">Cid</span>
             </h1>
-            <h2 class="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl font-light">
+            <!-- faz o texto ficar mais cinza e da um espaço em baixo e aumenta ele em 1 -->
+            <h2 class="text-xl text-gray-300 mb-6 ">
                 Estudante de Desenvolvimento de Software Multiplataforma na Fatec Jessen Vidal
             </h2>
-            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl">
+            <!-- faz o texto ficar mais cinza aina e ele ficar maior com espaço em baixo -->
+            <p class="text-xl text-gray-400 mb-10 ">
                 Focado na criação de interfaces modernas e no estudo de Inteligência Artificial e agentes multimodais.
             </p>
-            <a href="#projetos" class="inline-block bg-destaque text-fundo1 font-bold text-lg py-3 px-8 rounded transition-all duration-300 hover:bg-yellow-600 hover:-translate-y-1 shadow-lg hover:shadow-destaque/20">
+            <!-- faz o botão levar paar projetos e deixo funco amarelo com texto preto em negrito com tamanho de 5, faz o quadrado ser preenchido em horizontalmente e verticalmente(px e py) e rendondinho-->
+            <a href="#projetos" class=" bg-destaque text-fundo1 font-bold text-5 py-3 px-8 rounded gap-8 inline-block mb-4">
                 Ver meus projetos
+            </a>
+            <a href="" class=" bg-destaque text-fundo1 font-bold text-5 py-3 px-8 rounded">
+                Ver meu Currículo
             </a>
         </div>
     </header>
-
+    <!-- dar um espaço entre o header e essa seçã com o funndo cinza-->
     <section id="sobre" class="py-24 bg-fundo2">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-destaque mb-8">Sobre Mim</h2>
-            <p class="text-lg text-gray-300 mb-6">
+        <!-- faz o texto ficar no meio -->
+        <div class=" text-center">
+            <!-- faz o texto ficar 3x mairo e em negito com o texto amarelo com espaço em baxio -->
+            <h2 class="text-3xl font-bold text-destaque mb-8">Sobre Mim</h2>
+            <!-- faz o texto ficar 2x maior e em negrito e cinza com espaço em baixo -->
+            <p class="text-2 text-gray-300 mb-6">
                 Sou um desenvolvedor em constante evolução, prestes a iniciar minha jornada como estagiário na área de TI. Tenho um forte interesse tanto no front-end quanto na integração de tecnologias emergentes, como IA e personalização de ambientes virtuais.
             </p>
-            <p class="text-lg text-gray-300">
+            <!-- faz o texto ficar 2x mairo e cinza mair pretro -->
+            <p class="text-2 text-gray-300">
                 Quando não estou codando, gosto de pesquisar sobre hardware para otimização de performance e modelagem de personagens.
             </p>
         </div>
     </section>
-
+    <!-- leva apar secao habilidades e da um espaço dssa seçao para outra com o fundo preto -->
     <section id="habilidades" class="py-24 bg-fundo1">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-destaque mb-12 text-center">Habilidades Técnicas</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold transition-colors duration-300 hover:bg-destaque hover:text-fundo1 hover:-translate-y-1 cursor-default">HTML5 & CSS3</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold transition-colors duration-300 hover:bg-destaque hover:text-fundo1 hover:-translate-y-1 cursor-default">Python</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold transition-colors duration-300 hover:bg-destaque hover:text-fundo1 hover:-translate-y-1 cursor-default">Tailwind CSS</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold transition-colors duration-300 hover:bg-destaque hover:text-fundo1 hover:-translate-y-1 cursor-default">Lógica e Algoritmos</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold transition-colors duration-300 hover:bg-destaque hover:text-fundo1 hover:-translate-y-1 cursor-default">Inteligência Artificial</div>
+        <div>
+            <!-- faz o texto ficar 3x mairo com cor amarela e no meior com espaçp em baixo -->
+            <h2 class="text-3xl font-bold text-destaque mb-12 text-center">Habilidades Técnicas</h2>
+            <!-- usa grid para ficar 5 itens em uma linha com espaço de 6 em cada uma com texto no meio  -->
+            <div class="grid lg:grid-cols-5 gap-6 text-center">
+                <!-- faz a borda ficar amarela e o texto amrelo em negirto com preenchimento vertical e horinzontal com borda rendodinha  -->
+                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">HTML5 & CSS3</div>
+                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">Python</div>
+                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">Tailwind CSS</div>
+                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold">Lógica e Algoritmos</div>
+                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold">Inteligência Artificial</div>
+            </div>
+        </div>
+        <div class="py-24 "">
+            <!-- faz o texto ficar 3x mairo com cor amarela e no meior com espaçp em baixo -->
+            <h2 class="text-3xl font-bold text-destaque mb-12 text-center">Habilidades Pessoais</h2>
+            <!-- usa grid para ficar 5 itens em uma linha com espaço de 6 em cada uma com texto no meio  -->
+            <div class="grid lg:grid-cols-5 gap-6 text-center">
+                <!-- faz a borda ficar amarela e o texto amrelo em negirto com preenchimento vertical e horinzontal com borda rendodinha  -->
+                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">Comunicação Eficiente</div>
+                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">Trabalho em Equipe</div>
+                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">Pensamento Crítico</div>
+                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold">Resolução de Problemas</div>
+                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold">Adaptação a Novas Tecnologias</div>
             </div>
         </div>
     </section>
-
+    <!-- essa é a secãp projetos,faz um espaço dssa seçao para outra com o fundo cinza -->
     <section id="projetos" class="py-24 bg-fundo2">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-destaque mb-12 text-center">Projetos em Destaque</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <div class="bg-fundo1 border-l-4 border-destaque p-8 rounded-r-lg transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-destaque/10 group">
-                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-destaque transition-colors">Neva University</h3>
+
+        <div>
+            <!-- faz o texto ficar 3x maior em negrito com cor amarelo e no centro com espaço em baixo -->
+            <h2 class="text-3xl font-bold text-destaque mb-12 text-center">Projetos em Destaque</h2>
+            <!-- faz uma grid com espaço de 2 por linha com espaço de 8 entre elas -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- faz o texto ficar preto e com a borda direita em amarelo com preenchimento e rendodinha -->
+                <div class="bg-fundo1 border-l-4 border-destaque p-8 rounded-r-lg ">
+                    <!-- faz o texto ficar 2x maior em negrito com espaço em baixo -->
+                    <a href="https://fatec-dsm-12a6.vercel.app/" target="_blank" class="text-2xl font-bold mb-3 ">Neva University</a>
+                    <!-- faz o texto ficar mais cinza com espaço em baixo -->
                     <p class="text-gray-400 mb-6">Interface web responsiva construída com foco na estruturação semântica e estilização ágil de layouts.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-800 text-destaque text-sm px-3 py-1 rounded">HTML</span>
-                        <span class="bg-gray-800 text-destaque text-sm px-3 py-1 rounded">Tailwind</span>
+                    <!-- da um espaço de 2 entre os itens -->
+                    <div class="gap-2">
+                        <!-- faz o fundo do span ficar mais cinza e preenche horizontalmente e verticalmente e redondo  -->
+                        <span class="bg-gray-800 text-destaque px-3 py-1 rounded">HTML</span>
+                        <span class="bg-gray-800 text-destaque px-3 py-1 rounded">Tailwind</span>
                     </div>
                 </div>
-
+                 <!-- faz o texto ficar preto e com a borda direita em amarelo com preenchimento e rendodinha -->
+                <div class="bg-fundo1 border-l-4 border-destaque p-8 rounded-r-lg ">
+                    <!-- faz o texto ficar 2x maior em negrito com espaço em baixo -->
+                    <a href="https://c1dneve.github.io/daily-muse/" target="_blank" class="text-2xl font-bold mb-3 ">Daily Muse</a>
+                    <!-- faz o texto ficar mais cinza com espaço em baixo -->
+                    <p class="text-gray-400 mb-6">Interface web responsiva, site para palavras aleatorias no dia a dia com funcionalidades interativas e funções com IA.</p>
+                    <!-- da um espaço de 2 entre os itens -->
+                    <div class="gap-2">
+                        <!-- faz o fundo do span ficar mais cinza e preenche horizontalmente e verticalmente e redondo  -->
+                        <span class="bg-gray-800 text-destaque px-3 py-1 rounded">HTML</span>
+                        <span class="bg-gray-800 text-destaque px-3 py-1 rounded">CSS</span>
+                    </div>
                 
 
             </div>
         </div>
     </section>
-
-    <footer id="contato" class="py-16 bg-fundo1 border-t border-gray-900 text-center">
-        <div class="max-w-4xl mx-auto px-6">
+    <section id="certificacoes" class="py-24 bg-fundo2">
+        <h1>Certificações</h1>
+    </section>
+    <section id="eventos" class="py-24 bg-fundo2">
+        <h1>Eventos</h1>
+    </section>
+    <!-- é a seçao contato, da um espaço dessa seçaõ para outra de cima faz o fundo ficar preto e com texto meio -->
+    <footer id="contato" class="py-16 bg-fundo1 text-center">
+        <div>
+            <!-- faz o texto ficar 3x maior em negrito e amarelo com espaço em baixo -->
             <h2 class="text-3xl font-bold text-destaque mb-4">Vamos conversar?</h2>
+            <!-- faz o texto ficar mais cinza com espaço em baixo -->
             <p class="text-gray-400 mb-10">Aberto para oportunidades de estágio, networking e projetos colaborativos.</p>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-4 mb-12">
-                <a href="mailto:seuemail@exemplo.com" class="border-2 border-destaque text-destaque font-bold py-2 px-6 rounded transition-colors duration-300 hover:bg-destaque hover:text-fundo1">
+            <!-- faz o texto ficar no meio e os itens ficarem centralizadoscom espaço de 4 entre os itens e espaço em baixo-->
+            <div class="flex md:flex-row justify-center gap-4 mb-12">
+                <!-- leva para o meu email, deixar a borda em amarelo e o texto amarelo em negrito e preenche verticalmente e horizontalmente e redondinho-->
+                <a href="mailto:nevescidaniel@gmail.com" class="border-2 border-destaque text-destaque font-bold py-2 px-6 rounded ">
                     Me mande um E-mail
                 </a>
-                <a href="#" class="border-2 border-destaque text-destaque font-bold py-2 px-6 rounded transition-colors duration-300 hover:bg-destaque hover:text-fundo1">
+                <!-- leva para o meu LinkedIn, deixar a borda em amarelo e o texto amarelo em negrito e preenche verticalmente e horizontalmente e redondinho-->
+                <a href="https://br.linkedin.com/in/cid-doliveira" class="border-2 border-destaque text-destaque font-bold py-2 px-6 rounded ">
                     LinkedIn
                 </a>
-                <a href="#" class="border-2 border-destaque text-destaque font-bold py-2 px-6 rounded transition-colors duration-300 hover:bg-destaque hover:text-fundo1">
+                <!-- leva para o meu github, deixar a borda em amarelo e o texto amarelo em negrito e preenche verticalmente e horizontalmente e redondinho-->
+                <a href="https://github.com/C1dneve" class="border-2 border-destaque text-destaque font-bold py-2 px-6 rounded ">
                     GitHub
                 </a>
             </div>
-            
+            <!-- faz o texto ficar pequeno e cinza com espaço em baixo -->
             <p class="text-sm text-gray-600">&copy; 2026 Desenvolvido por Cid. Todos os direitos reservados.</p>
         </div>
     </footer>
