@@ -1,4 +1,4 @@
-# 🚀 Portfólio Profissional | Cid
+# Portfólio Cid
 
 Este é o repositório do meu portfólio pessoal, desenvolvido como uma **Single Page Application (SPA)** estática. O objetivo deste projeto é centralizar minha trajetória acadêmica na **Fatec Jessen Vidal**, meus projetos principais e minhas habilidades técnicas de forma limpa e moderna.
 
@@ -7,7 +7,7 @@ Este é o repositório do meu portfólio pessoal, desenvolvido como uma **Single
 
 ---
 
-## 🎨 Identidade Visual e Design
+## Identidade Visual
 
 O design foi concebido com foco em um contraste sofisticado e alta legibilidade, utilizando as cores:
 * **Destaque:** `#F2AF29` (Amarelo Ouro)
@@ -15,7 +15,7 @@ O design foi concebido com foco em um contraste sofisticado e alta legibilidade,
 
 O layout conta com um gradiente linear dinâmico na seção de boas-vindas (*Hero Section*), criando um impacto visual imediato para o visitante.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 Para este projeto, optei por uma abordagem focada em performance e fundamentos de desenvolvimento web:
 
@@ -26,7 +26,7 @@ Para este projeto, optei por uma abordagem focada em performance e fundamentos d
 > [!NOTE]
 > Este projeto foi desenvolvido sem o uso de JavaScript por opção técnica, priorizando a entrega de um layout fluido e otimizado apenas com CSS utilitário.
 
-## 📁 Seções do Portfólio
+## Seções do Portfólio
 
 1.  **Home/Hero:** Introdução profissional com gradiente customizado.
 2.  **Sobre Mim:** Breve resumo da minha atuação como estudante de **DSM** e interesses em IA.
@@ -34,10 +34,10 @@ Para este projeto, optei por uma abordagem focada em performance e fundamentos d
 4.  **Projetos:** Destaque para projetos como o **Neva University** e o assistente virtual **My Companion**.
 5.  **Contato:** Links diretos para LinkedIn, GitHub e E-mail.
 
-## 🚀 Como visualizar o projeto
+## Como visualizar o projeto
 
 Como o projeto utiliza o Tailwind via CDN, você não precisa instalar dependências pesadas. 
 
 1. Faça o clone do repositório:
    ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+   git clone [https://github.com/C1dneve/Portf-lio.git](https://github.com/C1dneve/Portf-lio.git)
