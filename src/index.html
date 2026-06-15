@@ -1,168 +1,1020 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cid | Portfólio DSM</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    <!-- cores para serem chamadas dentro do class mais facinho -->
-                    colors: {
-                        destaque: '#F2AF29',
-                        fundo1: '#000000',
-                        fundo2: '#121212',
-                    }
-                }
-            }
+  <link rel="icon" type="image/png" href="../src/images/icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cid Oliveira | Desenvolvedor Front-End | Portfólio</title>
+  <meta name="description" content="Portfólio de Cid Oliveira — estudante de DSM na Fatec Jessen Vidal, desenvolvedor front-end com experiência em projeto real para cliente, Python e automação." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cid Oliveira — Desenvolvedor Front-End" />
+  <meta property="og:description" content="Desenvolvedor front-end com 18 anos, já entregou site real para cliente. Buscando estágio em tecnologia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cid.dev" />
+  <meta property="og:image" content="../src/images/foto-perfil.jpeg" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            destaque: '#F2AF29',
+            fundo1:   '#000000',
+            fundo2:   '#0f0f0f',
+            fundo3:   '#161616',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
         }
-    </script>
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    ::selection { background: #F2AF29; color: #000; }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1.5px;
+      background: #F2AF29;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link[aria-current="page"]::after { width: 100%; }
+
+    .card-project {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      overflow: hidden;
+    }
+    .card-project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+    .btn-primary { transition: background 0.2s, transform 0.1s; }
+    .btn-primary:hover { filter: brightness(1.08); }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-outline { transition: background 0.2s, color 0.2s; }
+    .btn-outline:hover { background: #F2AF29; color: #000; }
+
+    .tag-tech {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      background: rgba(242,175,41,0.1);
+      border: 1px solid rgba(242,175,41,0.25);
+      border-radius: 4px;
+      color: #F2AF29;
+      letter-spacing: 0.02em;
+    }
+    .badge-client {
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      background: rgba(242,175,41,0.15);
+      border: 1px solid #F2AF29; color: #F2AF29;
+      padding: 2px 8px; border-radius: 3px;
+    }
+    .badge-wip {
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.4); color: #4ade80;
+      padding: 2px 8px; border-radius: 3px;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .pulse-dot {
+      width: 6px; height: 6px;
+      background: #4ade80; border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.75); }
+    }
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #F2AF29;
+    }
+    .exp-line {
+      position: absolute; left: 0; top: 6px;
+      width: 1px; height: calc(100% + 2rem);
+      background: linear-gradient(to bottom, #F2AF29, transparent);
+    }
+
+    /* ── Card media (vídeo/gif/imagem) ── */
+    .card-media {
+      width: 100%; aspect-ratio: 16/9;
+      background: #0f0f0f; position: relative;
+      overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .card-media video,
+    .card-media img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top;
+      display: block; transition: transform 0.4s ease;
+    }
+    .card-project:hover .card-media video,
+    .card-project:hover .card-media img { transform: scale(1.03); }
+    /* Overlay de play visível no hover quando tem vídeo */
+    .card-media .play-hint {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .card-media .play-hint span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #F2AF29;
+      background: rgba(0,0,0,0.7);
+      border: 1px solid rgba(242,175,41,0.3);
+      padding: 4px 12px; border-radius: 3px;
+    }
+    .card-project:hover .card-media .play-hint { opacity: 1; }
+    /* Placeholder quando mídia falha */
+    .card-media .ph {
+      position: absolute; inset: 0; display: none;
+      flex-direction: column; align-items: center;
+      justify-content: center; gap: 8px; color: #333;
+    }
+    .card-media img.errored { display: none; }
+    .card-media img.errored ~ .ph { display: flex; }
+    .card-media video.errored { display: none; }
+    .card-media video.errored ~ img { display: block; }
+
+    /* ── Eventos ── */
+    .event-card {
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      background: #161616;
+      transition: border-color 0.2s ease;
+    }
+    .event-card:not(.p-0) {
+      padding: 1.25rem 1.5rem;
+    }
+    .event-card:hover { border-color: rgba(242,175,41,0.2); }
+    .event-type {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #6b7280;
+    }
+
+    /* ── Lang toggle ── */
+    #lang-toggle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.06em;
+      border: 1px solid rgba(242,175,41,0.3); color: #F2AF29;
+      padding: 3px 10px; border-radius: 4px;
+      cursor: pointer; background: transparent;
+      transition: background 0.2s, color 0.2s; line-height: 1.5;
+    }
+    #lang-toggle:hover { background: #F2AF29; color: #000; }
+
+    /* ── Mobile menu ── */
+    #mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: #0a0a0a;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 0.5rem 0;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      transition: color 0.2s, background 0.2s;
+    }
+    #mobile-menu a:hover { color: #fff; background: rgba(255,255,255,0.04); }
+    #hamburger { display: none; }
+    @media (max-width: 767px) {
+      #hamburger { display: flex; }
+      #desktop-nav { display: none; }
+    }
+
+    /* ── Stats ── */
+    .stat-item {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .stat-num {
+      font-size: 1.75rem; font-weight: 700;
+      color: #F2AF29; line-height: 1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .stat-label {
+      font-size: 0.75rem; color: #6b7280;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Skill pills ── */
+    .skill-group { margin-bottom: 1.5rem; }
+    .skill-group-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+    .skill-pill.advanced {
+      background: rgba(242,175,41,0.12);
+      border: 1px solid rgba(242,175,41,0.3);
+      color: #F2AF29;
+    }
+    .skill-pill.intermediate {
+      background: rgba(156,163,175,0.08);
+      border: 1px solid rgba(156,163,175,0.2);
+      color: #9ca3af;
+    }
+    .skill-pill.learning {
+      background: rgba(107,114,128,0.06);
+      border: 1px solid rgba(107,114,128,0.15);
+      color: #6b7280;
+    }
+  </style>
 </head>
-<!-- deixa o fundo na cor do fundo1 e o texto cinza, se aumentar o 200 fica mais preto se diminuir fica mais branco e se selecionar o espaço do texto ele fica amarelo com o texto em si preto -->
-<body class="bg-fundo1 text-gray-200 font-sans selection:bg-destaque selection:text-fundo1">
-<!-- faz com  que o header ficar na tela toda com os itens no meio e deixa um amarelo no canto de baixo amarelo e faz um gradiente do fundo1 para o destaque-->
-    <header id="inicio" class="min-h-screen flex items-center bg-gradient-to-br from-fundo1 from-40% to-destaque border-b-4 border-destaque">
-        <!-- faz um espaço de 6 no texto, fica melhor no cel -->
-        <div class=" px-6">
-            <!-- faz o texto ficar maior e em negrito e com o um espaço em baixo(o botom)-->
-            <h1 class="text-7xl font-bold mb-4">
-                <!-- faz o tecto cid ficar na cor destaque -->
-                Olá, eu sou o <span class="text-destaque">Cid</span>
-            </h1>
-            <!-- faz o texto ficar mais cinza e da um espaço em baixo e aumenta ele em 1 -->
-            <h2 class="text-xl text-gray-300 mb-6 ">
-                Estudante de Desenvolvimento de Software Multiplataforma na Fatec Jessen Vidal
-            </h2>
-            <!-- faz o texto ficar mais cinza aina e ele ficar maior com espaço em baixo -->
-            <p class="text-xl text-gray-400 mb-10 ">
-                Focado na criação de interfaces modernas e no estudo de Inteligência Artificial e agentes multimodais.
-            </p>
-            <!-- faz o botão levar paar projetos e deixo funco amarelo com texto preto em negrito com tamanho de 5, faz o quadrado ser preenchido em horizontalmente e verticalmente(px e py) e rendondinho-->
-            <a href="#projetos" class=" bg-destaque text-fundo1 font-bold text-5 py-3 px-8 rounded gap-8 inline-block mb-4">
-                Ver meus projetos
-            </a>
-            <a href="" class=" bg-destaque text-fundo1 font-bold text-5 py-3 px-8 rounded">
-                Ver meu Currículo
-            </a>
-        </div>
-    </header>
-    <!-- dar um espaço entre o header e essa seçã com o funndo cinza-->
-    <section id="sobre" class="py-24 bg-fundo2">
-        <!-- faz o texto ficar no meio -->
-        <div class=" text-center">
-            <!-- faz o texto ficar 3x mairo e em negito com o texto amarelo com espaço em baxio -->
-            <h2 class="text-3xl font-bold text-destaque mb-8">Sobre Mim</h2>
-            <!-- faz o texto ficar 2x maior e em negrito e cinza com espaço em baixo -->
-            <p class="text-2 text-gray-300 mb-6">
-                Sou um desenvolvedor em constante evolução, prestes a iniciar minha jornada como estagiário na área de TI. Tenho um forte interesse tanto no front-end quanto na integração de tecnologias emergentes, como IA e personalização de ambientes virtuais.
-            </p>
-            <!-- faz o texto ficar 2x mairo e cinza mair pretro -->
-            <p class="text-2 text-gray-300">
-                Quando não estou codando, gosto de pesquisar sobre hardware para otimização de performance e modelagem de personagens.
-            </p>
-        </div>
-    </section>
-    <!-- leva apar secao habilidades e da um espaço dssa seçao para outra com o fundo preto -->
-    <section id="habilidades" class="py-24 bg-fundo1">
-        <div>
-            <!-- faz o texto ficar 3x mairo com cor amarela e no meior com espaçp em baixo -->
-            <h2 class="text-3xl font-bold text-destaque mb-12 text-center">Habilidades Técnicas</h2>
-            <!-- usa grid para ficar 5 itens em uma linha com espaço de 6 em cada uma com texto no meio  -->
-            <div class="grid lg:grid-cols-5 gap-6 text-center">
-                <!-- faz a borda ficar amarela e o texto amrelo em negirto com preenchimento vertical e horinzontal com borda rendodinha  -->
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">HTML5 & CSS3</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">Python</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">Tailwind CSS</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold">Lógica e Algoritmos</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold">Inteligência Artificial</div>
-            </div>
-        </div>
-        <div class="py-24 "">
-            <!-- faz o texto ficar 3x mairo com cor amarela e no meior com espaçp em baixo -->
-            <h2 class="text-3xl font-bold text-destaque mb-12 text-center">Habilidades Pessoais</h2>
-            <!-- usa grid para ficar 5 itens em uma linha com espaço de 6 em cada uma com texto no meio  -->
-            <div class="grid lg:grid-cols-5 gap-6 text-center">
-                <!-- faz a borda ficar amarela e o texto amrelo em negirto com preenchimento vertical e horinzontal com borda rendodinha  -->
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">Comunicação Eficiente</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">Trabalho em Equipe</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold ">Pensamento Crítico</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold">Resolução de Problemas</div>
-                <div class="border border-destaque text-destaque py-4 px-6 rounded-lg font-bold">Adaptação a Novas Tecnologias</div>
-            </div>
-        </div>
-    </section>
-    <!-- essa é a secãp projetos,faz um espaço dssa seçao para outra com o fundo cinza -->
-    <section id="projetos" class="py-24 bg-fundo2">
 
-        <div>
-            <!-- faz o texto ficar 3x maior em negrito com cor amarelo e no centro com espaço em baixo -->
-            <h2 class="text-3xl font-bold text-destaque mb-12 text-center">Projetos em Destaque</h2>
-            <!-- faz uma grid com espaço de 2 por linha com espaço de 8 entre elas -->
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- faz o texto ficar preto e com a borda direita em amarelo com preenchimento e rendodinha -->
-                <div class="bg-fundo1 border-l-4 border-destaque p-8 rounded-r-lg ">
-                    <!-- faz o texto ficar 2x maior em negrito com espaço em baixo -->
-                    <a href="https://fatec-dsm-12a6.vercel.app/" target="_blank" class="text-2xl font-bold mb-3 ">Neva University</a>
-                    <!-- faz o texto ficar mais cinza com espaço em baixo -->
-                    <p class="text-gray-400 mb-6">Interface web responsiva construída com foco na estruturação semântica e estilização ágil de layouts.</p>
-                    <!-- da um espaço de 2 entre os itens -->
-                    <div class="gap-2">
-                        <!-- faz o fundo do span ficar mais cinza e preenche horizontalmente e verticalmente e redondo  -->
-                        <span class="bg-gray-800 text-destaque px-3 py-1 rounded">HTML</span>
-                        <span class="bg-gray-800 text-destaque px-3 py-1 rounded">Tailwind</span>
-                    </div>
+<body class="bg-fundo1 text-gray-200 font-sans antialiased">
+
+  <!-- ═══════════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════════ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-fundo1/80 backdrop-blur-md" aria-label="Navegação principal">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
+
+      <a href="#inicio" class="font-mono text-destaque font-medium tracking-tight text-sm">
+        cid<span class="text-gray-500">.</span>dev
+      </a>
+
+      <!-- Desktop nav -->
+      <div id="desktop-nav" class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+        <a href="#sobre"       class="nav-link hover:text-white" data-i18n="nav.sobre">Sobre</a>
+        <a href="#formacao"    class="nav-link hover:text-white" data-i18n="nav.formacao">Formação</a>
+        <a href="#experiencia" class="nav-link hover:text-white" data-i18n="nav.experiencia">Experiência</a>
+        <a href="#projetos"    class="nav-link hover:text-white" data-i18n="nav.projetos">Projetos</a>
+        <a href="#eventos"     class="nav-link hover:text-white" data-i18n="nav.eventos">Eventos</a>
+        <a href="#habilidades" class="nav-link hover:text-white" data-i18n="nav.habilidades">Habilidades</a>
+        <a href="#contato"     class="nav-link hover:text-white" data-i18n="nav.contato">Contato</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="lang-toggle" aria-label="Switch language" aria-live="polite">EN</button>
+
+        <!-- Hamburger (mobile only) -->
+        <button id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"
+          class="flex flex-col gap-1.5 p-1.5 text-gray-400 hover:text-white transition-colors">
+          <span class="block w-5 h-px bg-current transition-all" id="hb1"></span>
+          <span class="block w-5 h-px bg-current transition-all" id="hb2"></span>
+          <span class="block w-5 h-px bg-current transition-all" id="hb3"></span>
+        </button>
+
+        <a href="#contato" class="btn-primary bg-destaque text-fundo1 text-sm font-semibold px-4 py-1.5 rounded" data-i18n="nav.cta">
+          Contato
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" role="navigation" aria-label="Menu mobile">
+      <a href="#sobre"       data-i18n="nav.sobre">Sobre</a>
+      <a href="#formacao"    data-i18n="nav.formacao">Formação</a>
+      <a href="#experiencia" data-i18n="nav.experiencia">Experiência</a>
+      <a href="#projetos"    data-i18n="nav.projetos">Projetos</a>
+      <a href="#eventos"     data-i18n="nav.eventos">Eventos</a>
+      <a href="#habilidades" data-i18n="nav.habilidades">Habilidades</a>
+      <a href="#contato"     data-i18n="nav.contato">Contato</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <header id="inicio" class="min-h-screen flex items-center pt-14">
+    <div class="max-w-6xl mx-auto px-6 w-full grid md:grid-cols-2 gap-16 items-center py-20">
+
+      <div>
+        <p class="section-eyebrow mb-4" data-i18n="hero.eyebrow">Disponível para estágio</p>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-5 tracking-tight">
+          <span data-i18n="hero.greeting">Olá, eu sou</span><br />
+          <span class="text-destaque">Cid Oliveira</span>
+        </h1>
+        <h2 class="text-lg text-gray-400 mb-4 font-medium" data-i18n="hero.subtitle">
+          Estudante de Desenvolvimento de Software Multiplataforma
+        </h2>
+        <p class="text-gray-500 mb-8 leading-relaxed max-w-md" data-i18n="hero.bio">
+          18 anos. Já entreguei um site real para cliente, estou construindo projetos com Python e automação, e busco meu primeiro estágio em tecnologia.
+        </p>
+
+        <!-- Stats rápidas -->
+        <div class="flex gap-8 mb-10 pb-10 border-b border-white/5">
+          <div class="stat-item">
+            <span class="stat-num">1</span>
+            <span class="stat-label" data-i18n="hero.stat1">cliente entregue</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">3+</span>
+            <span class="stat-label" data-i18n="hero.stat2">projetos ativos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">2</span>
+            <span class="stat-label" data-i18n="hero.stat3">anos estudando</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mb-10">
+          <a href="#projetos" class="btn-primary bg-destaque text-fundo1 font-semibold px-6 py-2.5 rounded text-sm" data-i18n="hero.cta1">
+            Ver projetos
+          </a>
+          <a href="../curriculum_cid.pdf" download target="_blank" rel="noopener"
+            class="btn-outline border border-destaque text-destaque font-semibold px-6 py-2.5 rounded text-sm" data-i18n="hero.cta2">
+            Currículo PDF ↓
+          </a>
+        </div>
+
+        <div class="flex items-center gap-5">
+          <a href="https://github.com/C1dneve" target="_blank" rel="noopener" aria-label="GitHub de Cid Oliveira"
+            class="text-gray-500 hover:text-destaque transition-colors flex items-center gap-2 text-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <span class="text-gray-700">·</span>
+          <a href="https://br.linkedin.com/in/cid-doliveira" target="_blank" rel="noopener" aria-label="LinkedIn de Cid Oliveira"
+            class="text-gray-500 hover:text-destaque transition-colors flex items-center gap-2 text-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            LinkedIn
+          </a>
+          <span class="text-gray-700">·</span>
+          <a href="mailto:nevescidaniel@gmail.com" class="text-gray-500 hover:text-destaque transition-colors text-sm">
+            E-mail
+          </a>
+        </div>
+      </div>
+
+      <div class="hidden md:flex justify-center items-center">
+        <div class="relative">
+          <img
+            src="../src/images/foto-perfil.jpeg"
+            alt="Foto de Cid Oliveira, desenvolvedor front-end"
+            class="w-64 h-80 rounded-2xl border border-white/8 object-cover"
+            style="object-position: center 20%"
+          />
+          <div class="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-destaque/40 rounded-tr-sm"></div>
+          <div class="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-destaque/40 rounded-bl-sm"></div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       SOBRE
+  ═══════════════════════════════════════════ -->
+  <section id="sobre" class="py-24 bg-fundo2">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl">
+        <p class="section-eyebrow mb-3" data-i18n="sobre.eyebrow">Sobre mim</p>
+        <h2 class="text-3xl font-bold mb-6 text-white" data-i18n="sobre.title">Desenvolvedor com visão além do código</h2>
+        <p class="text-gray-400 leading-relaxed mb-4" data-i18n="sobre.p1">
+          Tenho 18 anos, estudo Desenvolvimento de Software Multiplataforma na Fatec Jessen Vidal e já entreguei um site funcional para um cliente real — desenvolvido do zero com HTML, CSS, Bootstrap e PHP. Minha experiência administrativa me deu algo que a maioria dos devs júnior não tem: visão de negócio e capacidade de entender o que o cliente realmente precisa.
+        </p>
+        <p class="text-gray-500 leading-relaxed" data-i18n="sobre.p2">
+          Trabalho com front-end (HTML, CSS, Tailwind, Bootstrap) e estou expandindo para Python, SQL e automação. Atualmente construindo um rastreador de preços como projeto de dados. Gosto de hardware, IA e resolver problemas que importam.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FORMAÇÃO
+  ═══════════════════════════════════════════ -->
+  <section id="formacao" class="py-24 bg-fundo1">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="section-eyebrow mb-3" data-i18n="formacao.eyebrow">Formação</p>
+      <h2 class="text-3xl font-bold mb-14 text-white" data-i18n="formacao.title">Educação</h2>
+
+      <div class="space-y-12">
+
+        <div class="relative pl-6">
+          <div class="exp-line"></div>
+          <div class="absolute left-[-5px] top-[5px] w-2.5 h-2.5 rounded-full bg-destaque border-2 border-fundo1"></div>
+          <div class="flex flex-wrap items-start gap-3 mb-2">
+            <h3 class="text-lg font-semibold text-white" data-i18n="formacao.dsm.title">Desenvolvimento de Software Multiplataforma</h3>
+            <span class="badge-wip">
+              <span class="pulse-dot" aria-hidden="true"></span>
+              <span data-i18n="formacao.dsm.badge">Cursando</span>
+            </span>
+          </div>
+          <p class="text-sm text-gray-500 font-mono mb-3" data-i18n="formacao.dsm.meta">Fatec Jessen Vidal · 2026 – atual</p>
+          <p class="text-gray-400 leading-relaxed max-w-xl" data-i18n="formacao.dsm.desc">
+            Tecnólogo com foco em desenvolvimento web, banco de dados e automação.
+            Projeto integrador em andamento: plataforma de transparência pública com Python, Flask e MySQL.
+          </p>
+        </div>
+
+        <div class="relative pl-6">
+          <div class="absolute left-[-5px] top-[5px] w-2.5 h-2.5 rounded-full bg-gray-600 border-2 border-fundo1"></div>
+          <h3 class="text-lg font-semibold text-white mb-1" data-i18n="formacao.tecnico.title">Técnico em Desenvolvimento de Sistemas</h3>
+          <p class="text-sm text-gray-500 font-mono mb-3" data-i18n="formacao.tecnico.meta">2024 – 2025 · Concluído</p>
+          <p class="text-gray-400 leading-relaxed max-w-xl" data-i18n="formacao.tecnico.desc">
+            Fundamentos de lógica de programação, estruturas de dados, banco de dados relacional e desenvolvimento web. Base técnica que sustenta os projetos práticos entregues desde então.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       EXPERIÊNCIA
+  ═══════════════════════════════════════════ -->
+  <section id="experiencia" class="py-24 bg-fundo2">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="section-eyebrow mb-3" data-i18n="exp.eyebrow">Experiência</p>
+      <h2 class="text-3xl font-bold mb-14 text-white" data-i18n="exp.title">O que já fiz de verdade</h2>
+
+      <div class="space-y-12">
+
+        <!-- Projeto cliente real -->
+        <div class="relative pl-6">
+          <div class="exp-line"></div>
+          <div class="absolute left-[-5px] top-[5px] w-2.5 h-2.5 rounded-full bg-destaque border-2 border-fundo2"></div>
+          <div class="flex flex-wrap items-start gap-3 mb-2">
+            <h3 class="text-lg font-semibold text-white" data-i18n="exp.freelance.title">Desenvolvimento de Site para Cliente</h3>
+            <span class="badge-client" data-i18n="exp.freelance.badge">Projeto Real</span>
+          </div>
+          <p class="text-sm text-gray-500 font-mono mb-3" data-i18n="exp.freelance.meta">Freelance · 2024</p>
+          <p class="text-gray-400 leading-relaxed mb-4" data-i18n="exp.freelance.desc">
+            Desenvolvimento completo de plataforma de cursos para instituição religiosa — da reunião de briefing até a entrega em produção. Responsável pelo layout, responsividade, sistema de carrinho, formulário de contato com PHP, deploy e ajustes pós-entrega.
+          </p>
+          <ul class="space-y-1 mb-4 text-gray-400 text-sm list-disc list-inside">
+            <li data-i18n="exp.freelance.resp1">Reunião de briefing para entender necessidades e objetivos do cliente.</li>
+            <li data-i18n="exp.freelance.resp2">Layout moderno e responsivo com HTML, CSS, Bootstrap 4 e JavaScript.</li>
+            <li data-i18n="exp.freelance.resp3">Backend de formulário de contato e sistema de carrinho em PHP.</li>
+            <li data-i18n="exp.freelance.resp4">Deploy em Hostgator com configuração de domínio e uptime.</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag-tech">HTML5</span>
+            <span class="tag-tech">CSS3</span>
+            <span class="tag-tech">Bootstrap 4</span>
+            <span class="tag-tech">JavaScript</span>
+            <span class="tag-tech">PHP</span>
+            <span class="tag-tech">jQuery</span>
+            <span class="tag-tech">Hostgator</span>
+          </div>
+        </div>
+
+        <!-- Experiência administrativa -->
+        <div class="relative pl-6">
+          <div class="absolute left-[-5px] top-[5px] w-2.5 h-2.5 rounded-full bg-gray-600 border-2 border-fundo2"></div>
+          <h3 class="text-lg font-semibold text-white mb-1" data-i18n="exp.admin.title">Assistente Administrativo</h3>
+          <p class="text-sm text-gray-500 font-mono mb-3" data-i18n="exp.admin.meta">Secretaria de Manutenção Municipal · 2025 – 2026</p>
+          <p class="text-gray-400 leading-relaxed mb-4" data-i18n="exp.admin.desc">
+            Atividades administrativas em ambiente profissional — organização de processos, comunicação com equipe e atendimento. Desenvolveu responsabilidade, proatividade e capacidade de trabalhar sob demanda.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag-tech" data-i18n="exp.admin.tag1">Gestão de processos</span>
+            <span class="tag-tech" data-i18n="exp.admin.tag2">Comunicação profissional</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROJETOS
+  ═══════════════════════════════════════════ -->
+  <section id="projetos" class="py-24 bg-fundo1">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="section-eyebrow mb-3" data-i18n="proj.eyebrow">Projetos em destaque</p>
+      <h2 class="text-3xl font-bold mb-14 text-white" data-i18n="proj.title">O que eu construí</h2>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+
+        <!-- Card: Instituto Logos CFO (cliente real) -->
+        <article class="card-project bg-fundo3 border border-white/6 rounded-xl flex flex-col">
+          <figure class="card-media rounded-t-xl m-0">
+            <video
+              src="../src/videos/instituto-logos.mp4"
+              poster="../src/images/screenshots/instituto-logos.png"
+              autoplay muted loop playsinline
+              aria-label="Demonstração do site Instituto Logos CFO"
+              onerror="this.classList.add('errored')"
+            ></video>
+            <img
+              src="../src/images/screenshots/instituto-logos.png"
+              alt="Preview do site Instituto Logos CFO"
+              loading="lazy"
+              style="display:none"
+              onerror="this.classList.add('errored')"
+            />
+            <div class="play-hint" aria-hidden="true"><span>ao vivo</span></div>
+            <div class="ph" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">preview em breve</span>
+            </div>
+          </figure>
+          <div class="p-6 flex flex-col gap-4 flex-1">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <h3 class="text-lg font-semibold text-white">Instituto Logos CFO</h3>
+                  <span class="badge-client" data-i18n="proj.client_badge">Cliente real</span>
                 </div>
-                 <!-- faz o texto ficar preto e com a borda direita em amarelo com preenchimento e rendodinha -->
-                <div class="bg-fundo1 border-l-4 border-destaque p-8 rounded-r-lg ">
-                    <!-- faz o texto ficar 2x maior em negrito com espaço em baixo -->
-                    <a href="https://c1dneve.github.io/daily-muse/" target="_blank" class="text-2xl font-bold mb-3 ">Daily Muse</a>
-                    <!-- faz o texto ficar mais cinza com espaço em baixo -->
-                    <p class="text-gray-400 mb-6">Interface web responsiva, site para palavras aleatorias no dia a dia com funcionalidades interativas e funções com IA.</p>
-                    <!-- da um espaço de 2 entre os itens -->
-                    <div class="gap-2">
-                        <!-- faz o fundo do span ficar mais cinza e preenche horizontalmente e verticalmente e redondo  -->
-                        <span class="bg-gray-800 text-destaque px-3 py-1 rounded">HTML</span>
-                        <span class="bg-gray-800 text-destaque px-3 py-1 rounded">CSS</span>
-                    </div>
-                
+              </div>
+              <div class="flex gap-2 shrink-0">
+                <a href="https://icui.com.br" target="_blank" rel="noopener"
+                  aria-label="Ver site do Instituto Logos CFO"
+                  class="text-gray-500 hover:text-destaque transition-colors text-xs font-mono border border-white/10 px-2.5 py-1 rounded"
+                  data-i18n="proj.demo">demo ↗</a>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 font-mono uppercase tracking-widest mb-1" data-i18n="proj.goal_label">Objetivo</p>
+              <p class="text-gray-400 text-sm leading-relaxed" data-i18n="proj.logos.desc">
+                Plataforma de cursos online para instituição religiosa. Desenvolvida do zero com HTML, CSS, Bootstrap e PHP. Inclui sistema de carrinho, formulário de contato com backend e deploy em produção.
+              </p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 font-mono uppercase tracking-widest mb-2" data-i18n="proj.tech_label">Tecnologias</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag-tech">HTML5</span>
+                <span class="tag-tech">CSS3</span>
+                <span class="tag-tech">Bootstrap 4</span>
+                <span class="tag-tech">JavaScript</span>
+                <span class="tag-tech">PHP</span>
+                <span class="tag-tech">jQuery</span>
+              </div>
+            </div>
+          </div>
+        </article>
 
+        <!-- Card: Daily Muse -->
+        <article class="card-project bg-fundo3 border border-white/6 rounded-xl flex flex-col">
+          <figure class="card-media rounded-t-xl m-0">
+            <video
+              src="../src/videos/daily-muse.mp4"
+              poster="../src/images/screenshots/daily-muse.png"
+              autoplay muted loop playsinline
+              aria-label="Demonstração do projeto Daily Muse"
+              onerror="this.classList.add('errored')"
+            ></video>
+            <img
+              src="../src/images/daily-muse.png"
+              alt="Preview do projeto Daily Muse"
+              loading="lazy"
+              style="display:none"
+              onerror="this.classList.add('errored')"
+            />
+            <div class="play-hint" aria-hidden="true"><span>ao vivo</span></div>
+            <div class="ph" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">preview em breve</span>
             </div>
-        </div>
-    </section>
-    <section id="certificacoes" class="py-24 bg-fundo2">
-        <h1>Certificações</h1>
-    </section>
-    <section id="eventos" class="py-24 bg-fundo2">
-        <h1>Eventos</h1>
-    </section>
-    <!-- é a seçao contato, da um espaço dessa seçaõ para outra de cima faz o fundo ficar preto e com texto meio -->
-    <footer id="contato" class="py-16 bg-fundo1 text-center">
-        <div>
-            <!-- faz o texto ficar 3x maior em negrito e amarelo com espaço em baixo -->
-            <h2 class="text-3xl font-bold text-destaque mb-4">Vamos conversar?</h2>
-            <!-- faz o texto ficar mais cinza com espaço em baixo -->
-            <p class="text-gray-400 mb-10">Aberto para oportunidades de estágio, networking e projetos colaborativos.</p>
-            <!-- faz o texto ficar no meio e os itens ficarem centralizadoscom espaço de 4 entre os itens e espaço em baixo-->
-            <div class="flex md:flex-row justify-center gap-4 mb-12">
-                <!-- leva para o meu email, deixar a borda em amarelo e o texto amarelo em negrito e preenche verticalmente e horizontalmente e redondinho-->
-                <a href="mailto:nevescidaniel@gmail.com" class="border-2 border-destaque text-destaque font-bold py-2 px-6 rounded ">
-                    Me mande um E-mail
-                </a>
-                <!-- leva para o meu LinkedIn, deixar a borda em amarelo e o texto amarelo em negrito e preenche verticalmente e horizontalmente e redondinho-->
-                <a href="https://br.linkedin.com/in/cid-doliveira" class="border-2 border-destaque text-destaque font-bold py-2 px-6 rounded ">
-                    LinkedIn
-                </a>
-                <!-- leva para o meu github, deixar a borda em amarelo e o texto amarelo em negrito e preenche verticalmente e horizontalmente e redondinho-->
-                <a href="https://github.com/C1dneve" class="border-2 border-destaque text-destaque font-bold py-2 px-6 rounded ">
-                    GitHub
-                </a>
+          </figure>
+          <div class="p-6 flex flex-col gap-4 flex-1">
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="text-lg font-semibold text-white">Daily Muse</h3>
+              <div class="flex gap-2 shrink-0">
+                <a href="https://c1dneve.github.io/daily-muse/" target="_blank" rel="noopener"
+                  aria-label="Ver demo do projeto Daily Muse"
+                  class="text-gray-500 hover:text-destaque transition-colors text-xs font-mono border border-white/10 px-2.5 py-1 rounded"
+                  data-i18n="proj.demo">demo ↗</a>
+                <a href="https://github.com/C1dneve/daily-muse" target="_blank" rel="noopener"
+                  aria-label="Ver código do Daily Muse no GitHub"
+                  class="text-gray-500 hover:text-destaque transition-colors text-xs font-mono border border-white/10 px-2.5 py-1 rounded"
+                  data-i18n="proj.code">código ↗</a>
+              </div>
             </div>
-            <!-- faz o texto ficar pequeno e cinza com espaço em baixo -->
-            <p class="text-sm text-gray-600">&copy; 2026 Desenvolvido por Cid. Todos os direitos reservados.</p>
+            <div>
+              <p class="text-xs text-gray-500 font-mono uppercase tracking-widest mb-1" data-i18n="proj.goal_label">Objetivo</p>
+              <p class="text-gray-400 text-sm leading-relaxed" data-i18n="proj.muse.desc">
+                App web que gera palavras e frases aleatórias para inspiração diária, com integração de IA. Explorou consumo de API e lógica interativa no front-end.
+              </p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 font-mono uppercase tracking-widest mb-2" data-i18n="proj.tech_label">Tecnologias</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag-tech">HTML5</span>
+                <span class="tag-tech">CSS3</span>
+                <span class="tag-tech">JavaScript</span>
+                <span class="tag-tech">AI API</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Card: Neva University + WIP -->
+      <div class="grid md:grid-cols-2 gap-6 mb-10">
+        <article class="card-project bg-fundo3 border border-white/6 rounded-xl flex flex-col">
+          <figure class="card-media rounded-t-xl m-0">
+            <video
+              src="../src/videos/neva-university.mp4"
+              poster="../src/images/screenshots/neva-university.png"
+              autoplay muted loop playsinline
+              aria-label="Demonstração do projeto Neva University"
+              onerror="this.classList.add('errored')"
+            ></video>
+            <img
+              src="../src/images/screenshots/neva-university.png"
+              alt="Preview do projeto Neva University"
+              loading="lazy"
+              style="display:none"
+              onerror="this.classList.add('errored')"
+            />
+            <div class="play-hint" aria-hidden="true"><span>ao vivo</span></div>
+            <div class="ph" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">preview em breve</span>
+            </div>
+          </figure>
+          <div class="p-6 flex flex-col gap-4 flex-1">
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="text-lg font-semibold text-white">Neva University</h3>
+              <div class="flex gap-2 shrink-0">
+                <a href="https://fatec-dsm-12a6.vercel.app/" target="_blank" rel="noopener"
+                  aria-label="Ver demo do projeto Neva University"
+                  class="text-gray-500 hover:text-destaque transition-colors text-xs font-mono border border-white/10 px-2.5 py-1 rounded"
+                  data-i18n="proj.demo">demo ↗</a>
+                <a href="https://github.com/C1dneve/FatecDsm" target="_blank" rel="noopener"
+                  aria-label="Ver código do projeto Neva University no GitHub"
+                  class="text-gray-500 hover:text-destaque transition-colors text-xs font-mono border border-white/10 px-2.5 py-1 rounded"
+                  data-i18n="proj.code">código ↗</a>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 font-mono uppercase tracking-widest mb-1" data-i18n="proj.goal_label">Objetivo</p>
+              <p class="text-gray-400 text-sm leading-relaxed" data-i18n="proj.neva.desc">
+                Landing page completa para universidade fictícia. Projeto que consolidou domínio de HTML semântico e Tailwind CSS com foco em responsividade e acessibilidade.
+              </p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 font-mono uppercase tracking-widest mb-2" data-i18n="proj.tech_label">Tecnologias</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag-tech">HTML5</span>
+                <span class="tag-tech">Tailwind CSS</span>
+                <span class="tag-tech">Vercel</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projeto em desenvolvimento -->
+        <div class="border border-white/8 rounded-xl p-6 bg-fundo2/60 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="badge-wip">
+                <span class="pulse-dot" aria-hidden="true"></span>
+                <span data-i18n="proj.wip_badge">Em desenvolvimento</span>
+              </span>
+              <span class="text-gray-600 text-xs font-mono" data-i18n="proj.current_label">Projeto atual</span>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">Smart Price Tracker</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4" data-i18n="proj.tracker.desc">
+              Rastreador de preços com scraping de e-commerces, armazenamento em banco de dados e alertas automáticos. Projeto de dados que une Python, SQL e automação.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag-tech">Python</span>
+              <span class="tag-tech">SQL</span>
+              <span class="tag-tech">Playwright</span>
+              <span class="tag-tech" data-i18n="proj.tracker.tag">Automação</span>
+            </div>
+          </div>
+          <a href="https://github.com/C1dneve" target="_blank" rel="noopener"
+            class="text-xs font-mono text-gray-600 hover:text-destaque transition-colors"
+            data-i18n="proj.tracker.follow">Acompanhe no GitHub →</a>
         </div>
-    </footer>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       EVENTOS
+  ═══════════════════════════════════════════ -->
+  <section id="eventos" class="py-24 bg-fundo1">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="section-eyebrow mb-3" data-i18n="eventos.eyebrow">Eventos</p>
+      <h2 class="text-3xl font-bold mb-14 text-white" data-i18n="eventos.title">Onde estive</h2>
+
+      <div class="grid gap-4 max-w-lg">
+
+        <!-- Maratona entre Fatecs -->
+        <article class="card-project event-card p-0 overflow-hidden flex flex-col">
+          <figure class="card-media rounded-t-[10px] m-0" style="aspect-ratio:4/3">
+            <img
+              src="../src/images/maratona.jpeg"
+              alt="Foto da Maratona entre Fatecs 2026 — grupo acertou 1 de 8 questões e ganhou uma bexiga"
+              loading="lazy"
+              onerror="this.classList.add('errored')"
+            />
+            <div class="ph" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">adicione sua foto</span>
+            </div>
+          </figure>
+          <div class="p-5 flex flex-col gap-3 flex-1">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <span class="event-type" data-i18n="eventos.maratona.type">Competição · Maratona</span>
+                <h3 class="text-base font-semibold text-white mt-1" data-i18n="eventos.maratona.title">Maratona entre Fatecs</h3>
+              </div>
+              <span class="text-xs font-mono text-gray-600 shrink-0 mt-1">2026</span>
+            </div>
+            <p class="text-gray-500 text-sm leading-relaxed" data-i18n="eventos.maratona.desc">
+              Competição de lógica e programação entre alunos de diferentes unidades da Fatec. Meu grupo acertou 1 de 8 — e a premiação foi uma bexiga. Exercitou resolução de problemas sob pressão e trabalho em equipe.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag-tech" data-i18n="eventos.maratona.tag1">Algoritmos</span>
+              <span class="tag-tech" data-i18n="eventos.maratona.tag2">Trabalho em equipe</span>
+              <span class="tag-tech">🎈 1 de 8</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       HABILIDADES
+  ═══════════════════════════════════════════ -->
+  <section id="habilidades" class="py-24 bg-fundo2">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="section-eyebrow mb-3" data-i18n="skills.eyebrow">Habilidades</p>
+      <h2 class="text-3xl font-bold mb-14 text-white" data-i18n="skills.title">Tecnologias &amp; ferramentas</h2>
+
+      <div class="grid md:grid-cols-2 gap-x-16 gap-y-2 max-w-2xl">
+
+        <div class="skill-group">
+          <p class="skill-group-label" data-i18n="skills.group.advanced">Avançado</p>
+          <div class="skill-pills">
+            <span class="skill-pill advanced">HTML5</span>
+            <span class="skill-pill advanced">CSS3</span>
+            <span class="skill-pill advanced">Tailwind CSS</span>
+            <span class="skill-pill advanced">Bootstrap</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-label" data-i18n="skills.group.intermediate">Intermediário</p>
+          <div class="skill-pills">
+            <span class="skill-pill intermediate">Python</span>
+            <span class="skill-pill intermediate">SQL</span>
+            <span class="skill-pill intermediate">PHP</span>
+            <span class="skill-pill intermediate">Git &amp; GitHub</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-label" data-i18n="skills.group.learning">Em evolução</p>
+          <div class="skill-pills">
+            <span class="skill-pill learning">JavaScript</span>
+            <span class="skill-pill learning">Flask</span>
+            <span class="skill-pill learning">MySQL</span>
+            <span class="skill-pill learning">jQuery</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CONTATO / FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer id="contato" class="py-20 bg-fundo1 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="section-eyebrow mb-4" data-i18n="contato.eyebrow">Contato</p>
+      <h2 class="text-3xl font-bold text-white mb-3" data-i18n="contato.title">Vamos conversar?</h2>
+      <p class="text-gray-500 mb-10 max-w-md mx-auto leading-relaxed" data-i18n="contato.desc">
+        Aberto para oportunidades de estágio, projetos freelance e networking em tecnologia.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-14">
+        <a href="mailto:nevescidaniel@gmail.com"
+          class="btn-outline border border-destaque text-destaque font-semibold py-2.5 px-6 rounded text-sm">
+          nevescidaniel@gmail.com
+        </a>
+        <a href="https://br.linkedin.com/in/cid-doliveira" target="_blank" rel="noopener"
+          class="btn-outline border border-white/15 text-gray-400 font-semibold py-2.5 px-6 rounded text-sm flex items-center gap-2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/C1dneve" target="_blank" rel="noopener"
+          class="btn-outline border border-white/15 text-gray-400 font-semibold py-2.5 px-6 rounded text-sm flex items-center gap-2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+
+      <p class="text-xs text-gray-700 font-mono" data-i18n="contato.footer">&copy; 2026 Cid Oliveira · Desenvolvido com HTML &amp; Tailwind CSS</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════════ -->
+  <script>
+    /* ── i18n ── */
+    const translations = {
+      pt: {
+        'nav.sobre':'Sobre','nav.formacao':'Formação','nav.experiencia':'Experiência',
+        'nav.projetos':'Projetos','nav.eventos':'Eventos','nav.habilidades':'Habilidades','nav.contato':'Contato','nav.cta':'Contato',
+        'hero.eyebrow':'Disponível para estágio','hero.greeting':'Olá, eu sou',
+        'hero.subtitle':'Estudante de Desenvolvimento de Software Multiplataforma',
+        'hero.bio':'18 anos. Já entreguei um site real para cliente, estou construindo projetos com Python e automação, e busco meu primeiro estágio em tecnologia.',
+        'hero.cta1':'Ver projetos','hero.cta2':'Currículo PDF ↓',
+        'hero.stat1':'cliente entregue','hero.stat2':'projetos ativos','hero.stat3':'anos estudando',
+        'sobre.eyebrow':'Sobre mim','sobre.title':'Desenvolvedor com visão além do código',
+        'sobre.p1':'Tenho 18 anos, estudo Desenvolvimento de Software Multiplataforma na Fatec Jessen Vidal e já entreguei um site funcional para um cliente real — desenvolvido do zero com HTML, CSS, Bootstrap e PHP. Minha experiência administrativa me deu algo que a maioria dos devs júnior não tem: visão de negócio e capacidade de entender o que o cliente realmente precisa.',
+        'sobre.p2':'Trabalho com front-end (HTML, CSS, Tailwind, Bootstrap) e estou expandindo para Python, SQL e automação. Atualmente construindo um rastreador de preços como projeto de dados. Gosto de hardware, IA e resolver problemas que importam.',
+        'formacao.eyebrow':'Formação','formacao.title':'Educação',
+        'formacao.dsm.title':'Desenvolvimento de Software Multiplataforma','formacao.dsm.badge':'Cursando',
+        'formacao.dsm.meta':'Fatec Jessen Vidal · 2026 – atual',
+        'formacao.dsm.desc':'Tecnólogo com foco em desenvolvimento web, banco de dados e automação. Projeto integrador em andamento: plataforma de transparência pública com Python, Flask e MySQL.',
+        'formacao.tecnico.title':'Técnico em Desenvolvimento de Sistemas','formacao.tecnico.meta':'2024 – 2025 · Concluído',
+        'formacao.tecnico.desc':'Fundamentos de lógica de programação, estruturas de dados, banco de dados relacional e desenvolvimento web. Base técnica que sustenta os projetos práticos entregues desde então.',
+        'exp.eyebrow':'Experiência','exp.title':'O que já fiz de verdade',
+        'exp.freelance.title':'Desenvolvimento de Site para Cliente','exp.freelance.badge':'Projeto Real',
+        'exp.freelance.meta':'Freelance · 2024',
+        'exp.freelance.desc':'Desenvolvimento completo de plataforma de cursos para instituição religiosa — da reunião de briefing até a entrega em produção. Responsável pelo layout, responsividade, sistema de carrinho, formulário de contato com PHP, deploy e ajustes pós-entrega.',
+        'exp.freelance.resp1':'Reunião de briefing para entender necessidades e objetivos do cliente.',
+        'exp.freelance.resp2':'Layout moderno e responsivo com HTML, CSS, Bootstrap 4 e JavaScript.',
+        'exp.freelance.resp3':'Backend de formulário de contato e sistema de carrinho em PHP.',
+        'exp.freelance.resp4':'Deploy em Hostgator com configuração de domínio e uptime.',
+        'exp.admin.title':'Assistente Administrativo','exp.admin.meta':'Secretaria de Manutenção Municipal · 2025 – 2026',
+        'exp.admin.desc':'Atividades administrativas em ambiente profissional — organização de processos, comunicação com equipe e atendimento. Desenvolveu responsabilidade, proatividade e capacidade de trabalhar sob demanda.',
+        'exp.admin.tag1':'Gestão de processos','exp.admin.tag2':'Comunicação profissional',
+        'proj.eyebrow':'Projetos em destaque','proj.title':'O que eu construí',
+        'proj.client_badge':'Cliente real','proj.demo':'demo ↗','proj.code':'código ↗',
+        'proj.goal_label':'Objetivo','proj.tech_label':'Tecnologias',
+        'proj.logos.desc':'Plataforma de cursos online para instituição religiosa. Desenvolvida do zero com HTML, CSS, Bootstrap e PHP. Inclui sistema de carrinho, formulário de contato com backend e deploy em produção.',
+        'proj.neva.desc':'Landing page completa para universidade fictícia. Projeto que consolidou domínio de HTML semântico e Tailwind CSS com foco em responsividade e acessibilidade.',
+        'proj.muse.desc':'App web que gera palavras e frases aleatórias para inspiração diária, com integração de IA. Explorou consumo de API e lógica interativa no front-end.',
+        'proj.wip_badge':'Em desenvolvimento','proj.current_label':'Projeto atual',
+        'proj.tracker.desc':'Rastreador de preços com scraping de e-commerces, armazenamento em banco de dados e alertas automáticos. Projeto de dados que une Python, SQL e automação.',
+        'proj.tracker.tag':'Automação','proj.tracker.follow':'Acompanhe no GitHub →',
+        'eventos.eyebrow':'Eventos','eventos.title':'Onde estive',
+        'eventos.maratona.type':'Competição · Maratona',
+        'eventos.maratona.title':'Maratona entre Fatecs',
+        'eventos.maratona.desc':'Competição de lógica e programação entre alunos de diferentes unidades da Fatec. Meu grupo acertou 1 de 8 — e a premiação foi uma bexiga. Exercitou resolução de problemas sob pressão e trabalho em equipe.',
+        'eventos.maratona.tag1':'Algoritmos','eventos.maratona.tag2':'Trabalho em equipe',
+        'skills.eyebrow':'Habilidades','skills.title':'Tecnologias & ferramentas',
+        'skills.group.advanced':'Avançado','skills.group.intermediate':'Intermediário','skills.group.learning':'Em evolução',
+        'contato.eyebrow':'Contato','contato.title':'Vamos conversar?',
+        'contato.desc':'Aberto para oportunidades de estágio, projetos freelance e networking em tecnologia.',
+        'contato.footer':'© 2026 Cid Oliveira · Desenvolvido com HTML & Tailwind CSS',
+      },
+      en: {
+        'nav.sobre':'About','nav.formacao':'Education','nav.experiencia':'Experience',
+        'nav.projetos':'Projects','nav.eventos':'Events','nav.habilidades':'Skills','nav.contato':'Contact','nav.cta':'Contact',
+        'hero.eyebrow':'Open to internships','hero.greeting':'Hi, I\'m',
+        'hero.subtitle':'Multiplatform Software Development student',
+        'hero.bio':'18 y/o. Delivered a real client website, building Python & automation projects, seeking my first tech internship.',
+        'hero.cta1':'View projects','hero.cta2':'Resume PDF ↓',
+        'hero.stat1':'client delivered','hero.stat2':'active projects','hero.stat3':'years studying',
+        'sobre.eyebrow':'About me','sobre.title':'Developer with a business eye',
+        'sobre.p1':'I\'m 18, studying Multiplatform Software Development at Fatec Jessen Vidal, and I\'ve delivered a working website to a real client — built from scratch with HTML, CSS, Bootstrap, and PHP. My administrative background gives me something most junior devs don\'t have: business sense and the ability to understand what clients actually need.',
+        'sobre.p2':'I work with front-end (HTML, CSS, Tailwind, Bootstrap) and am expanding into Python, SQL, and automation. Currently building a price tracker as a data project. I like hardware, AI, and solving problems that matter.',
+        'formacao.eyebrow':'Education','formacao.title':'Academic background',
+        'formacao.dsm.title':'Multiplatform Software Development','formacao.dsm.badge':'Ongoing',
+        'formacao.dsm.meta':'Fatec Jessen Vidal · 2026 – present',
+        'formacao.dsm.desc':'Technology degree focused on web development, databases, and automation. Current integrative project: a public transparency platform with Python, Flask, and MySQL.',
+        'formacao.tecnico.title':'Systems Development Technician','formacao.tecnico.meta':'2024 – 2025 · Completed',
+        'formacao.tecnico.desc':'Fundamentals of programming logic, data structures, relational databases, and web development. The technical foundation behind every project delivered since.',
+        'exp.eyebrow':'Experience','exp.title':'What I\'ve actually built',
+        'exp.freelance.title':'Client Website Development','exp.freelance.badge':'Real Project',
+        'exp.freelance.meta':'Freelance · 2024',
+        'exp.freelance.desc':'Full development of an online course platform for a religious institution — from briefing to production. Responsible for layout, responsiveness, shopping cart, PHP contact form backend, deploy, and post-delivery adjustments.',
+        'exp.freelance.resp1':'Briefing meeting to understand client needs and goals.',
+        'exp.freelance.resp2':'Modern responsive layout with HTML, CSS, Bootstrap 4, and JavaScript.',
+        'exp.freelance.resp3':'Contact form backend and shopping cart system in PHP.',
+        'exp.freelance.resp4':'Deploy on Hostgator with domain configuration and uptime.',
+        'exp.admin.title':'Administrative Assistant','exp.admin.meta':'Municipal Maintenance Department · 2025 – 2026',
+        'exp.admin.desc':'Administrative tasks in a professional environment — process organisation, team communication, and support. Built accountability, proactivity, and the ability to work under pressure.',
+        'exp.admin.tag1':'Process management','exp.admin.tag2':'Professional communication',
+        'proj.eyebrow':'Featured projects','proj.title':'What I built',
+        'proj.client_badge':'Real client','proj.demo':'demo ↗','proj.code':'code ↗',
+        'proj.goal_label':'Goal','proj.tech_label':'Technologies',
+        'proj.logos.desc':'Online course platform for a religious institution. Built from scratch with HTML, CSS, Bootstrap, and PHP. Includes shopping cart system, PHP contact form backend, and production deploy.',
+        'proj.neva.desc':'Full landing page for a fictional university. Consolidated mastery of semantic HTML and Tailwind CSS with a focus on responsiveness and accessibility.',
+        'proj.muse.desc':'Web app that generates random words and phrases for daily inspiration, with AI integration. Explored API consumption and interactive front-end logic.',
+        'proj.wip_badge':'In development','proj.current_label':'Current project',
+        'proj.tracker.desc':'Price tracker with e-commerce scraping, database storage, and automatic alerts. A data project combining Python, SQL, and automation.',
+        'proj.tracker.tag':'Automation','proj.tracker.follow':'Follow on GitHub →',
+        'eventos.eyebrow':'Events','eventos.title':'Where I\'ve been',
+        'eventos.maratona.type':'Competition · Marathon',
+        'eventos.maratona.title':'Inter-Fatec Programming Marathon',
+        'eventos.maratona.desc':'Logic and programming competition between students from different Fatec campuses. My team got 1 out of 8 right — and the prize was a balloon. Practised problem-solving under pressure and teamwork.',
+        'eventos.maratona.tag1':'Algorithms','eventos.maratona.tag2':'Teamwork',
+        'skills.eyebrow':'Skills','skills.title':'Technologies & tools',
+        'skills.group.advanced':'Advanced','skills.group.intermediate':'Intermediate','skills.group.learning':'Learning',
+        'contato.eyebrow':'Contact','contato.title':'Let\'s talk?',
+        'contato.desc':'Open to internship opportunities, freelance projects, and tech networking.',
+        'contato.footer':'© 2026 Cid Oliveira · Built with HTML & Tailwind CSS',
+      }
+    };
+
+    let currentLang = 'pt';
+
+    function applyLang(lang) {
+      const dict = translations[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+      const btn = document.getElementById('lang-toggle');
+      btn.textContent = lang === 'pt' ? 'EN' : 'PT';
+      btn.setAttribute('aria-label', lang === 'pt' ? 'Switch to English' : 'Mudar para Português');
+    }
+
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+      currentLang = currentLang === 'pt' ? 'en' : 'pt';
+      applyLang(currentLang);
+    });
+
+    /* ── Mobile menu hambúrguer ── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hb1 = document.getElementById('hb1');
+    const hb2 = document.getElementById('hb2');
+    const hb3 = document.getElementById('hb3');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+      hb1.style.transform = isOpen ? 'translateY(7px) rotate(45deg)' : '';
+      hb2.style.opacity   = isOpen ? '0' : '1';
+      hb3.style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
+    });
+
+    // Fechar menu ao clicar em um link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Abrir menu');
+        hb1.style.transform = hb3.style.transform = '';
+        hb2.style.opacity = '1';
+      });
+    });
+
+    /* ── Screenshot error handler ── */
+    document.querySelectorAll('.card-screenshot img').forEach(img => {
+      img.addEventListener('error', function() { this.classList.add('errored'); });
+    });
+
+    /* ── Active nav link on scroll ── */
+    const sections = document.querySelectorAll('section[id], header[id], footer[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.removeAttribute('aria-current');
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.setAttribute('aria-current', 'page');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
 
 </body>
 </html>
